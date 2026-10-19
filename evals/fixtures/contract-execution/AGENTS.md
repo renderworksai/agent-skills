@@ -1,0 +1,2 @@
+# Fixture policy
+Read CONTRACT.md as the active execution authority. Preserve test files, protected.txt, and dependencies. Only src/parse.js may change. Retain original test failure evidence. Diagnose from observed output; scoped repairs are permitted. If a repair requires another file or a changed assertion, stop that boundary and report why. Do not invoke Superpowers or create another plan. Do not start queued tasks. No network or global environment changes are authorized.

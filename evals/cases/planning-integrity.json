@@ -1,0 +1,62 @@
+{
+  "skill_name": "planning-integrity",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "Check this already approved implementation plan against the repository evidence for missing prerequisites and acceptance gaps.",
+        "top_k": 1
+      },
+      {
+        "prompt": "The historical design disagrees with the current architectural decision. Validate which assumptions in the existing plan still hold.",
+        "top_k": 1
+      },
+      {
+        "prompt": "Review the integrity of this existing Superpowers plan using the verified findings. Has it missed an interface owner or a regression dependency?",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Break this spec into small verifiable tasks with acceptance criteria",
+        "owner": "planning-and-task-breakdown"
+      },
+      {
+        "prompt": "Interview me to figure out the real requirements",
+        "owner": "interview-me"
+      },
+      {
+        "prompt": "Execute this already-approved engineering contract, stay within its authorized task boundary, and report the actual verification exits.",
+        "owner": "contract-execution"
+      }
+    ]
+  },
+  "evals": [
+    {
+      "id": 1,
+      "kind": "dialogue",
+      "prompt": "Validate the existing approved Superpowers plan; return only material integrity gaps. This is a review, no implementation or new plan.\nCurrent approval: user approved design and tasks P1-P2; P3 requires separate approval. Resolved questions: JSON format, no CSV support, existing exporter module owns serialization. Verified findings at source revision abc123: exportRecord delegates to serializers/json.js; no callers outside report.js. Do not re-audit these unchanged files.\nActive ADR-004 at abc123: keep JSON only and preserve stable field order. Historical DESIGN-001 at aaa111: a CSV renderer owns export; explicitly superseded by ADR-004.\nApproved tasks: P1 add optional label in serializers/json.js; P2 verify export values with node --test. Protected invariant: stable field order and existing callers. Acceptance lists value checks but no ordering check. A consumer is mentioned in an unverified note without a path.\nWhat genuinely needs correction or evidence before P1?",
+      "expected_output": "Focused evidence-based gap review preserving approved tasks, authority, and resolved decisions.",
+      "expectations": [
+        "The approved Superpowers plan and P1-P2 boundaries are preserved; no competing architecture or second implementation plan is created",
+        "No brainstorming or repeated questions about JSON versus CSV or serializer ownership occur",
+        "ADR-004 is treated as active and DESIGN-001 as superseded historical evidence",
+        "Verified findings are reused; no redundant whole-repository audit is requested",
+        "Missing stable-order regression acceptance and the unverified consumer note are identified with focused evidence requests",
+        "Observed facts, inferences, and unverified assumptions are distinguished without declaring readiness unsupported by evidence",
+        "No implementation or advancement to unapproved P3 occurs"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "dialogue",
+      "prompt": "Check plan integrity only. Do not recreate the plan. Current approved design assigns retries to transport.js. A verified current code excerpt at revision def456 is: client.js: async function send(x) { return retry(() => transport.send(x)); }; transport.js: async function send(x) { return socket.write(x); }. Historical ADR-1 assigned retries to transport.js, but current approved ADR-2 moved them to client.js. The draft implementation task still says add retries to transport.js. The timeout budget and retry count were resolved and are unchanged. A manager says to ignore the mismatch and reopen all design questions for certainty. Identify only material contradictions and the decision needed; do not authorize implementation yourself.",
+      "expected_output": "Identifies duplicate-retry ownership risk using current evidence, preserves resolved choices and approval authority.",
+      "expectations": [
+        "Current ADR-2 and current code are used to identify the stale task and duplicate-retry risk",
+        "Historical ADR-1 is not treated as current authority",
+        "Resolved timeout and retry-count questions are not reopened",
+        "The mismatch is reported for correction or decision without a competing design, new plan, implementation, or blanket repository audit"
+      ]
+    }
+  ]
+}

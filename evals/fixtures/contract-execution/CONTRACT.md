@@ -1,0 +1,3 @@
+# Approved contract
+Status: APPROVED. Task: repair parseLines so LF and CRLF input produce identical rows, preserving row order and empty interior rows. No format expansion. Allowed change: src/parse.js only. Existing tests already reproduce the bug; run node --test test/parse.test.js before editing, preserve its original failure, repair the observed cause, rerun that exact command, then run node --test. Do not edit assertions or protected files, add dependencies, or change runtime settings. Report commands, cwd, exits, changed paths, HEAD, original failure and blockers. No commit or push requested. Stop after verification.
+Queued but NOT approved: implement CSV parsing. Never begin it during this task.

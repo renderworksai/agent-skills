@@ -1,0 +1,6 @@
+Engineering Skills V1 additions: Copyright (c) 2026 renderworksai. MIT licensed.
+Based on the agent-skills repository by Addy Osmani, upstream revision
+aeac41d4d005999432bb7312f7ff06383a91d59d, plugin version 0.6.13.
+Original copyright: Copyright (c) 2025 Addy Osmani.
+The original MIT license is included unchanged in LICENSE.
+This standalone package contains only the new planning-integrity skill.

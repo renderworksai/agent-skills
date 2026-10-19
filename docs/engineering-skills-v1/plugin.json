@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "engineering-planning-integrity",
+  "version": "0.1.0",
+  "description": "Checks existing engineering plans against current repository evidence and approved decisions.",
+  "author": { "name": "renderworksai" },
+  "repository": "https://github.com/renderworksai/agent-skills",
+  "license": "MIT",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Planning Integrity",
+        "shortDescription": "Validate engineering plans",
+        "longDescription": "Validate evidence, authority, dependencies, invariants, and acceptance gaps while preserving the existing approved plan.",
+        "developerName": "renderworksai",
+        "capabilities": []
+      }
+    }
+  }
+}
